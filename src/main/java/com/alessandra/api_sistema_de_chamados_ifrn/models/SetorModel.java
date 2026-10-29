@@ -21,21 +21,15 @@ public class SetorModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false, unique = true, length = 150)
-    private String email;
+    @Column(nullable = false, unique = true, length = 20)
+    private String sigla;
 
-    @Column(nullable = false, length = 30)
-    private String matricula;
+    @OneToMany(mappedBy = "setor")
+    private List<CategoriaModel> categorias = new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private TipoUsuario tipo;
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "setor_id")
-    private SetorModel setor;
+    @OneToMany(mappedBy = "setor")
+    private List<UsuarioModel> tecnicos = new ArrayList<>();
 }
