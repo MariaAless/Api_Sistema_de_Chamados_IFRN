@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.domain.Pageable;
 import java.time.LocalDateTime;
 
-public interface ChamadoRepository extends JpaRepository<ChamadoRepository, Long> {
+public interface ChamadoRepository extends JpaRepository<ChamadoModel, Long> {
 
     // regra 8 (categoria): "categoria.id" -> existsByCategoriaId
     boolean existsByCategoriaId(Long categoriaId);
