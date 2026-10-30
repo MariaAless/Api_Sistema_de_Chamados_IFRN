@@ -11,6 +11,6 @@ public record ChamadoRequestDto (
         @NotBlank @Size(max = 150) String local,
         Prioridade prioridade,
         @NotNull Long categoriaId,
-        @NotNull Long solicitanteI
+        @NotNull Long solicitanteId
 ){
 }
