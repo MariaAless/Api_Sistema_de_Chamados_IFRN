@@ -11,5 +11,14 @@ import java.awt.print.Pageable;
 public interface CategoriaRepository extends JpaRepository<CategoriaModel, Long> {
     boolean existsBySetorId(Long setorId);
 
+    @Query("""
+            SELECT c FROM CategoriaModel c
+            WHERE LOWER(c.nome) LIKE :nome
+              AND (:setorId IS NULL OR c.setor.id = :setorId)
+            """)
+    Page<CategoriaModel> filtrar(@Param("nome") String nome,
+                                 @Param("setorId") Long setorId,
+                                 Pageable pageable);
+
 
 }
